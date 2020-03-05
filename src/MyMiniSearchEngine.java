@@ -22,16 +22,26 @@ public class MyMiniSearchEngine {
         for (int i = 0; i < texts.size(); i++) {
             String str = texts.get(i);
             List<String> words = Arrays.asList(str.split(" "));
-            List<Integer> wordsIndex = new ArrayList<>();
 
             for (int j = 0; j < words.size(); j++) {
+                List<Integer> docIndex = new ArrayList<>();
+                docIndex.add(i);
+
+                List<Integer> wordsIndex = new ArrayList<>();
 
                 for (int k = j; k < words.size(); k++) {
                     if (words.get(j).equals(words.get(k)))
                         wordsIndex.add(j);
                 }
 
-                indexes.put(words.get(j), Arrays.asList(Collections.singletonList(i), wordsIndex));
+                if (indexes.containsKey(words.get(j))) {
+                    List<List<Integer>> currentIndexes = new List<List<Integer>>;
+                    currentIndexes = indexes.get(words.get(j));
+                    currentIndexes.add(docIndex, wordsIndex);
+                    indexes.put(words.get(j), currentIndexes);
+                } else {
+                    indexes.put(words.get(j), Arrays.asList(docIndex, wordsIndex));
+                }
             }
         }
     }
