@@ -27,7 +27,7 @@ public class MyMiniSearchEngine {
                 List<Integer> docIndex = new ArrayList<>();
                 docIndex.add(i);
 
-                List<Integer> wordsIndex = new ArrayList<>();
+                List<Integer> wordsIndex = new ArrayList<Integer>();
 
                 for (int k = j; k < words.size(); k++) {
                     if (words.get(j).equals(words.get(k)))
@@ -35,10 +35,8 @@ public class MyMiniSearchEngine {
                 }
 
                 if (indexes.containsKey(words.get(j))) {
-                    List<List<Integer>> currentIndexes = new List<List<Integer>>;
-                    currentIndexes = indexes.get(words.get(j));
-                    currentIndexes.add(docIndex, wordsIndex);
-                    indexes.put(words.get(j), currentIndexes);
+                    indexes.get(words.get(j)).get(0).add(i);
+                    indexes.get(words.get(j)).add(wordsIndex);
                 } else {
                     indexes.put(words.get(j), Arrays.asList(docIndex, wordsIndex));
                 }
@@ -54,11 +52,7 @@ public class MyMiniSearchEngine {
         List<Integer> returnList = new ArrayList<>();
 
         if(indexes.containsKey(keyPhrase)) {
-            List<List<Integer>> found = indexes.get(keyPhrase);
-
-            for (int i = 0; i < found.size(); i++) {
-                returnList.add(found.get(i).get(0));
-            }
+            List<Integer> found = indexes.get(keyPhrase).get(0);
         }
 
         return new ArrayList<>(); // place holder
