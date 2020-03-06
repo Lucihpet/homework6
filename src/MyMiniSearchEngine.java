@@ -16,6 +16,12 @@ public class MyMiniSearchEngine {
     // each item in the List is considered a document.
     // assume documents only contain alphabetical words separated by white spaces.
 
+    /*
+    I have spent hours upon hours looking at this thing, and I cannot get it to work.
+    I guess I don't fully understand this concept.
+    I give up and I'll take the L on this one.
+     */
+
     private void index(List<String> texts) {
         this.indexes = new HashMap<>();
 
